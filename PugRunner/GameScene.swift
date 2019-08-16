@@ -13,6 +13,9 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    let pugSprite = SKSpriteNode(imageNamed: "pug0.png")
+    var pugFrames = [SKTexture]()
+    
     
     override func didMove(to view: SKView) {
         
@@ -22,6 +25,28 @@ class GameScene: SKScene {
             label.alpha = 0.0
             label.run(SKAction.fadeIn(withDuration: 2.0))
         }
+        
+            
+            //pugSprite.zRotation = .pi / -5
+            pugSprite.size = CGSize(width: 200, height: 200)
+            pugSprite.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        pugSprite.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
+            addChild(pugSprite)
+            //let textureAtlas = SKTextureAtlas(named: "Goku Frames")
+           // for index in 0..<textureAtlas.textureNames.count{
+            //   let textureNames = "gokuadult" + String(index)
+            //    pugFrames.append(textureAtlas.textureNamed(textureNames))
+          //  }
+            
+           // pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.2)))
+            
+            
+            
+            //    @objc func timeToMoveOn() {
+            //       endResult()
+            
+            //     }
+        //}
         
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05

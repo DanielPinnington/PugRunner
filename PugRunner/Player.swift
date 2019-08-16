@@ -11,6 +11,7 @@ import SpriteKit
 
 
 class Player : SKSpriteNode{
+    
     var jumpAction : SKAction?
     
     
@@ -22,6 +23,25 @@ class Player : SKSpriteNode{
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
+        
     
+        func update() {
+            /*if (isGliding == true) {
+             self.position = CGPointMake(self.position.x + minSpeed, self.position.y - 0.4)
+             } else {
+             self.position = CGPointMake(self.position.x + minSpeed, self.position.y + jumpAmount)
+             }*/
+            self.position.x += minSpeed;
+        }
+        
+        func setUpRun() {
+            let atlas = SKTextureAtlas (named: "Pug")
+            var atlasTextures:[SKTexture] = []
+            
+            //for i in 0 ..< 9{
+              //  let texture:SKTexture = atlas.textureNamed( String(format: "bro3_walk000%i", i+1))
+               // atlasTextures.insert(texture, at:i)
+            }
+        
+    }
 }
