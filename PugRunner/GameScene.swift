@@ -28,17 +28,17 @@ class GameScene: SKScene {
         
             
             //pugSprite.zRotation = .pi / -5
-            pugSprite.size = CGSize(width: 200, height: 200)
-            pugSprite.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            pugSprite.size = CGSize(width: 110, height: 85)
+            pugSprite.anchorPoint = CGPoint(x: 7.5, y: 6.5)
         pugSprite.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
             addChild(pugSprite)
-            //let textureAtlas = SKTextureAtlas(named: "Goku Frames")
-           // for index in 0..<textureAtlas.textureNames.count{
-            //   let textureNames = "gokuadult" + String(index)
-            //    pugFrames.append(textureAtlas.textureNamed(textureNames))
-          //  }
+            let textureAtlas = SKTextureAtlas(named: "PugSprites")
+            for index in 0..<textureAtlas.textureNames.count{
+               let textureNames = "pug" + String(index)
+                pugFrames.append(textureAtlas.textureNamed(textureNames))
+            }
             
-           // pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.2)))
+            pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.1)))
             
             
             
