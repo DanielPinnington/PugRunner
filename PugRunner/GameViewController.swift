@@ -72,7 +72,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate{
     
     func saveHighScore(number : Int){
         if(GKLocalPlayer.local.isAuthenticated){
-            
+            //tHIS NEEDS FIXING
         }
     }
 }
