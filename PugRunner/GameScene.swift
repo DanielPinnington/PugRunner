@@ -8,17 +8,29 @@
 
 import SpriteKit
 import GameplayKit
+import GameKit
 
 class GameScene: SKScene {
+    
+    
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     let pugSprite = SKSpriteNode(imageNamed: "pug0.png")
     var pugFrames = [SKTexture]()
+    var myLabel : SKLabelNode!
+    var myScore : SKLabelNode!
+    var counter = 0 //Counter for score every frame (in update)
+    
+    var score = 0{
+        didSet {
+            myScore.text = "Score \(score)"
+        }
+    }
     
     
     override func didMove(to view: SKView) {
-        
+        createLabel()
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
@@ -30,7 +42,7 @@ class GameScene: SKScene {
             //pugSprite.zRotation = .pi / -5
             pugSprite.size = CGSize(width: 110, height: 85)
             pugSprite.anchorPoint = CGPoint(x: 7.5, y: 6.5)
-        pugSprite.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
+            pugSprite.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
             addChild(pugSprite)
             let textureAtlas = SKTextureAtlas(named: "PugSprites")
             for index in 0..<textureAtlas.textureNames.count{
@@ -38,7 +50,7 @@ class GameScene: SKScene {
                 pugFrames.append(textureAtlas.textureNamed(textureNames))
             }
             
-            pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.1)))
+            pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.05)))
             
             
             
@@ -62,6 +74,15 @@ class GameScene: SKScene {
         }
     }
     
+    
+    func createLabel(){
+        myScore = SKLabelNode(fontNamed: "Chalkduster")
+        myScore.text = "Score \(score)"
+        myScore.fontSize = 32
+        myScore.position = CGPoint(x: -500, y: 250)
+    
+        self.addChild(myScore)
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
@@ -108,7 +129,13 @@ class GameScene: SKScene {
     }
     
     
+    
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        if counter >= 60{
+            score += 50
+            counter = 0
+        }else{
+            counter += 1
+        }
     }
 }
