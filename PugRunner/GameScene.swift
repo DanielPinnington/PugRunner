@@ -13,9 +13,7 @@ import GameKit
 class GameScene: SKScene, GKGameCenterControllerDelegate{
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         //
-        if()
-        else
-        
+        //Fixed bug
     }
     
     
