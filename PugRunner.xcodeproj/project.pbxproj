@@ -16,6 +16,7 @@
 		41D8C9902302DBFE00C66C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C98E2302DBFE00C66C05 /* Main.storyboard */; };
 		41D8C9922302DBFF00C66C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C9912302DBFF00C66C05 /* Assets.xcassets */; };
 		41D8C9952302DBFF00C66C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C9932302DBFF00C66C05 /* LaunchScreen.storyboard */; };
+		41E038352309CB2A00421F8E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E038342309CB2A00421F8E /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		41D8C9912302DBFF00C66C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41D8C9942302DBFF00C66C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41D8C9962302DBFF00C66C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41E038342309CB2A00421F8E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E038352309CB2A00421F8E /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +51,7 @@
 			children = (
 				41D8C9832302DBFE00C66C05 /* PugRunner */,
 				41D8C9822302DBFE00C66C05 /* Products */,
+				41E038332309CB2A00421F8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +78,14 @@
 				41D8C9962302DBFF00C66C05 /* Info.plist */,
 			);
 			path = PugRunner;
+			sourceTree = "<group>";
+		};
+		41E038332309CB2A00421F8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41E038342309CB2A00421F8E /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +317,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DanielPinnington.PugRunner12345;
+				PRODUCT_BUNDLE_IDENTIFIER = DanielPinnington.PugRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -323,7 +335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DanielPinnington.PugRunner12345;
+				PRODUCT_BUNDLE_IDENTIFIER = DanielPinnington.PugRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

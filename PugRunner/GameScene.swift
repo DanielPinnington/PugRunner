@@ -10,7 +10,11 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, GKGameCenterControllerDelegate{
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        //
+    }
+    
     
     
     
@@ -127,8 +131,6 @@ class GameScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
-    
     
     override func update(_ currentTime: TimeInterval) {
         if counter >= 60{

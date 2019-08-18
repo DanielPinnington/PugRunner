@@ -11,8 +11,15 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameViewController: UIViewController{
+class GameViewController: UIViewController, GKGameCenterControllerDelegate{
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+       //
+    }
+    
 
+    
+    var score = GameScene().myScore
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +40,20 @@ class GameViewController: UIViewController{
         }
     }
 
+    
+    func authPlayer(){
+        let localPlayer = GKLocalPlayer.local
+        
+        localPlayer.authenticateHandler = {
+            (view, Error) in
+            if view != nil{
+                self.present(view!, animated: true, completion: nil)
+            }else{
+                print(GKLocalPlayer.local.isAuthenticated)
+            }
+        }
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -47,5 +68,11 @@ class GameViewController: UIViewController{
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func saveHighScore(number : Int){
+        if(GKLocalPlayer.local.isAuthenticated){
+            
+        }
     }
 }
