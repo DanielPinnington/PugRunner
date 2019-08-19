@@ -24,6 +24,9 @@ class GameScene: SKScene, GKGameCenterControllerDelegate{
     var pugFrames = [SKTexture]()
     var myLabel : SKLabelNode!
     var myScore : SKLabelNode!
+    var myHighScore : SKLabelNode!
+    var time = Timer()
+    var finish = Timer()
     var counter = 0 //Counter for score every frame (in update)
     
     var score = 0{
@@ -56,13 +59,7 @@ class GameScene: SKScene, GKGameCenterControllerDelegate{
             
             pugSprite.run(SKAction.repeatForever(SKAction.animate(with: pugFrames, timePerFrame: 0.05)))
             
-            
-            
-            //    @objc func timeToMoveOn() {
-            //       endResult()
-            
-            //     }
-        //}
+             finish = Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(timeToMoveOn), userInfo: nil, repeats: false)
         
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
@@ -78,6 +75,17 @@ class GameScene: SKScene, GKGameCenterControllerDelegate{
         }
     }
     
+    @objc func timeToMoveOn() {
+        endResult()
+    }
+    
+    func endResult(){
+                    let newScenee = LoseScreen(size: size)
+                    newScenee.scaleMode = scaleMode
+                    newScenee.score = score
+                  let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+                  view?.presentScene(newScenee, transition: reveal)
+    }
     
     func createLabel(){
         myScore = SKLabelNode(fontNamed: "Chalkduster")
@@ -85,7 +93,12 @@ class GameScene: SKScene, GKGameCenterControllerDelegate{
         myScore.fontSize = 32
         myScore.position = CGPoint(x: -500, y: 250)
     
-        self.addChild(myScore)
+        
+        myHighScore = SKLabelNode(fontNamed: "Chalkduster")
+        myHighScore.text = "Score \(score)"
+        myHighScore.fontSize = 32
+        myHighScore.position = CGPoint(x: -500, y: 350)
+        self.addChild(myHighScore)
     }
     
     func touchDown(atPoint pos : CGPoint) {

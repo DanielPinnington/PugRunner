@@ -19,7 +19,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate{
 
     
     var score = GameScene().myScore
-    
+    var Highscore = GameScene().myHighScore
     override func viewDidLoad() {
         super.viewDidLoad()
         
