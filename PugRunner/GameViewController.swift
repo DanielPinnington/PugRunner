@@ -37,9 +37,19 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate{
             view.showsPhysics = true
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            
+            let button = UIButton(frame: CGRect(x: 100, y:100, width: 100, height: 50))
+            button.backgroundColor = .green
+            button.setTitle("leaderboards", for: .normal)
+            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+            
+            self.view.addSubview(button)
         }
     }
-
+    @objc func buttonAction(sender: UIButton!){
+        showLeaderboard()
+    }
     
     func authPlayer(){
         let localPlayer = GKLocalPlayer.local
@@ -72,7 +82,27 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate{
     
     func saveHighScore(number : Int){
         if(GKLocalPlayer.local.isAuthenticated){
-            //tHIS NEEDS FIXING
+            //tHIS NEEDS FIXING]
+            if GKLocalPlayer.local.isAuthenticated{
+                let scoreReported = GKScore(leaderboardIdentifier: "This")
+                scoreReported.value = Int64(number)
+                let scoreArray : [GKScore] = [scoreReported]
+                
+                GKScore.report(scoreArray, withCompletionHandler: nil)
+            }
         }
     }
+    
+    func showLeaderboard(){
+        let viewController = self.view.window?.rootViewController
+        let gcvc = GKGameCenterViewController()
+        
+        gcvc.gameCenterDelegate = self
+        
+        viewController?.present(gcvc, animated: true, completion: nil)
+    }
+}
+
+func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController){
+    gameCenterViewController.dismiss(animated: true, completion:nil)
 }
