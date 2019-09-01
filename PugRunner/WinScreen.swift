@@ -26,7 +26,7 @@ class LoseScreen: SKScene, SKPhysicsContactDelegate{
      myScore = SKLabelNode(fontNamed: "Chalkduster")
      myScore?.text = "Score: \(score)"
      myScore.fontSize = 32
-     myScore.position = CGPoint(x: 110, y: 340)
+     myScore.position = CGPoint(x: 0, y: 400)
      self.addChild(myScore)
      }
 }
