@@ -18,23 +18,25 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
     
     
     struct PhysicsCategory {
-    static let none      : UInt32 = 0
-    static let coin : UInt32 = 1 << 0
+    static let none         : UInt32 = 0
+    static let coin         : UInt32 = 1 << 0
+    static let pugSpritecat : UInt32 = 1 << 2
+    static let enemyCat     : UInt32 = 1 << 1  // 1
     }
     
     
-    private var label : SKLabelNode?
+    private var label      : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     let pugSprite = SKSpriteNode(imageNamed: "pug0.png")
     let loopingBG:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     let loopingBG2:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     
-    var pugFrames = [SKTexture]()
-    var myLabel : SKLabelNode!
-    var myScore : SKLabelNode!
+    var pugFrames   = [SKTexture]()
+    var myLabel     : SKLabelNode!
+    var myScore     : SKLabelNode!
     var myHighScore : SKLabelNode!
-    var time = Timer()
-    var finish = Timer()
+    var time    = Timer()
+    var finish  = Timer()
     var counter = 0 //Counter for score every frame (in update)
     
     var score = 0{
@@ -118,19 +120,35 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
         coin.physicsBody?.isDynamic = false
         coin.physicsBody?.allowsRotation = false
         coin.physicsBody?.categoryBitMask = PhysicsCategory.coin
-      //  coin.physicsBody?.contactTestBitMask = PhysicsCategory.spaceShipSpriteCat
         coin.physicsBody?.collisionBitMask = PhysicsCategory.none
-        
-       // let actualY = random(min: coin.size.height, max: size.height - coin.size.height/2)
-           // coin.position = CGPoint(x: frame.size.width + coin.size.width/2, y:frame.size.height * random(min: 0, max: 1))
-            //let actualDuration = random(min: CGFloat(3.0), max: CGFloat(6.0))
-            //let actionMove = SKAction.move(to: CGPoint(x: -self.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
-           // let actionMoveDone = SKAction.removeFromParent()
-          //  let loseAction = SKAction.run() { [weak self] in
-           //     guard self != nil else { return }
-          //  }
-           // coin.run(SKAction.sequence([actionMove, actionMoveDone]))
         }
+    
+    func spawnEnemy() {
+        
+        let enemy = SKSpriteNode(imageNamed: "coin1")
+        
+        let coin = SKTexture.init(imageNamed: "coin1")
+        let coin2 = SKTexture.init(imageNamed: "coin2")
+        let coin3 = SKTexture.init(imageNamed: "coin3")
+        let coin4 = SKTexture.init(imageNamed: "coin4")
+        let coin5 = SKTexture.init(imageNamed: "coin5")
+        let coin6 = SKTexture.init(imageNamed: "coin6")
+        
+        let coinFrames: [SKTexture] = [coin, coin2, coin3, coin4, coin5, coin6]
+        
+        enemy.name = "enemy"
+        enemy.size = CGSize(width: 35, height: 30)
+        enemy.physicsBody = SKPhysicsBody(circleOfRadius: enemy.frame.size.width * 0.3) // 1
+        enemy.physicsBody?.isDynamic = false
+        enemy.physicsBody?.affectedByGravity = false
+        enemy.physicsBody?.allowsRotation = false
+        enemy.physicsBody?.collisionBitMask = PhysicsCategory.none
+        enemy.physicsBody?.usesPreciseCollisionDetection = true
+        
+        let animations = SKAction.animate(with: coinFrames, timePerFrame: 0.2)
+        enemy.run(SKAction.repeatForever(animations))
+        addChild(enemy)
+    }
     
     override func update(_ currentTime: TimeInterval) {
         if counter >= 60{
@@ -144,5 +162,32 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
     func resetLoopingBackground(){
         loopingBG.position = CGPoint(x: 0, y: 0)
         loopingBG2.position = CGPoint(x: loopingBG2.size.width - 3, y: 0)
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+                
+                 var firstBody: SKPhysicsBody
+                       var secondbody: SKPhysicsBody
+                       if (contact.bodyA.categoryBitMask > contact.bodyB.categoryBitMask){
+                           firstBody = contact.bodyA
+                           secondbody = contact.bodyB
+                       }else{
+                           firstBody = contact.bodyB
+                           secondbody = contact.bodyA
+                       }
+                       if ((firstBody.categoryBitMask & PhysicsCategory.pugSpritecat != 0)
+                           && secondbody.categoryBitMask & PhysicsCategory.enemyCat != 0){
+                           secondbody.node?.removeFromParent()
+                           score += 100
+                       }
+                       if((firstBody.categoryBitMask & PhysicsCategory.pugSpritecat != 0)
+                           && secondbody.categoryBitMask & PhysicsCategory.coin != 0){
+                           //Sound variable -- run()
+                           secondbody.node?.removeFromParent()
+                           if score > 0{
+                               score -= 100
+                           } else{
+                           }
+                       }
     }
 }
