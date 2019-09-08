@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41542E3E23254D0000FF1D70 /* LoseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41542E3D23254D0000FF1D70 /* LoseScreen.swift */; };
 		41901E11230343E1009D7EDD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41901E10230343E1009D7EDD /* Player.swift */; };
 		41D8C9852302DBFE00C66C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8C9842302DBFE00C66C05 /* AppDelegate.swift */; };
 		41D8C9872302DBFE00C66C05 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C9862302DBFE00C66C05 /* GameScene.sks */; };
@@ -17,10 +18,10 @@
 		41D8C9922302DBFF00C66C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C9912302DBFF00C66C05 /* Assets.xcassets */; };
 		41D8C9952302DBFF00C66C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D8C9932302DBFF00C66C05 /* LaunchScreen.storyboard */; };
 		41E038352309CB2A00421F8E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E038342309CB2A00421F8E /* GameKit.framework */; };
-		41F64E37230B0D8900C78CDC /* WinScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F64E36230B0D8900C78CDC /* WinScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41542E3D23254D0000FF1D70 /* LoseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoseScreen.swift; path = ../LoseScreen.swift; sourceTree = "<group>"; };
 		41901E10230343E1009D7EDD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		41D8C9812302DBFE00C66C05 /* PugRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PugRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D8C9842302DBFE00C66C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +34,6 @@
 		41D8C9942302DBFF00C66C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41D8C9962302DBFF00C66C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E038342309CB2A00421F8E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		41F64E36230B0D8900C78CDC /* WinScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +68,12 @@
 		41D8C9832302DBFE00C66C05 /* PugRunner */ = {
 			isa = PBXGroup;
 			children = (
+				41542E3D23254D0000FF1D70 /* LoseScreen.swift */,
 				41D8C9842302DBFE00C66C05 /* AppDelegate.swift */,
 				41D8C9862302DBFE00C66C05 /* GameScene.sks */,
 				41901E10230343E1009D7EDD /* Player.swift */,
 				41D8C9882302DBFE00C66C05 /* Actions.sks */,
 				41D8C98A2302DBFE00C66C05 /* GameScene.swift */,
-				41F64E36230B0D8900C78CDC /* WinScreen.swift */,
 				41D8C98C2302DBFE00C66C05 /* GameViewController.swift */,
 				41D8C98E2302DBFE00C66C05 /* Main.storyboard */,
 				41D8C9912302DBFF00C66C05 /* Assets.xcassets */,
@@ -165,9 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				41901E11230343E1009D7EDD /* Player.swift in Sources */,
-				41F64E37230B0D8900C78CDC /* WinScreen.swift in Sources */,
 				41D8C98B2302DBFE00C66C05 /* GameScene.swift in Sources */,
 				41D8C98D2302DBFE00C66C05 /* GameViewController.swift in Sources */,
+				41542E3E23254D0000FF1D70 /* LoseScreen.swift in Sources */,
 				41D8C9852302DBFE00C66C05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

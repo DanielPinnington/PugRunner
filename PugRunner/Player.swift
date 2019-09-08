@@ -13,7 +13,9 @@ import SpriteKit
 class Player : SKSpriteNode{
     
     var jumpAction : SKAction?
-    
+    var runAction:SKAction?
+    var glideAction:SKAction?
+    var fireAction:SKAction?
     
     var isJumping  : Bool    = false
     var isRunning  : Bool    = true

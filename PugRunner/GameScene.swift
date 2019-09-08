@@ -28,6 +28,8 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
     private var label      : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     let pugSprite = SKSpriteNode(imageNamed: "pug0.png")
+   // let pugSprite:Player = Player(imageNamed: "pug0") (may need this)
+    let thePlayer:Player = Player(imageNamed: "pug0")
     let loopingBG:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     let loopingBG2:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     
@@ -127,7 +129,7 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
         
         let enemy = SKSpriteNode(imageNamed: "coin1")
         
-        let coin = SKTexture.init(imageNamed: "coin1")
+        let coin  = SKTexture.init(imageNamed: "coin1")
         let coin2 = SKTexture.init(imageNamed: "coin2")
         let coin3 = SKTexture.init(imageNamed: "coin3")
         let coin4 = SKTexture.init(imageNamed: "coin4")
@@ -186,8 +188,7 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
                            secondbody.node?.removeFromParent()
                            if score > 0{
                                score -= 100
-                           } else{
-                           }
-                       }
+            }
+        }
     }
 }
