@@ -1,16 +1,11 @@
-//
-//  GameScene.swift
-//  PugRunner
-//
-//  Created by Daniel Pinnington on 13/08/2019.
-//  Copyright © 2019 DanielPinnington. All rights reserved.
-//
-
 import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
+protocol GameSceneDelegate{
+    func endResult()
+}
+class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         //
     }
@@ -29,7 +24,7 @@ class GameScene: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelega
     private var spinnyNode : SKShapeNode?
     let pugSprite = SKSpriteNode(imageNamed: "pug0.png")
    // let pugSprite:Player = Player(imageNamed: "pug0") (may need this)
-    let thePlayer:Player = Player(imageNamed: "pug0")
+//    let thePlayer:Player = Player(imageNamed: "pug0")
     let loopingBG:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     let loopingBG2:SKSpriteNode = SKSpriteNode(imageNamed: "Looping_BG")
     
