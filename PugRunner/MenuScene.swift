@@ -17,7 +17,7 @@ var gotHit = -100
 var time = Timer()
 var finish = Timer()
 var timerIsOn = false
-
+var pullrequest = true
 let button = SKSpriteNode(imageNamed: "pug0")
 let pug = SKSpriteNode(imageNamed: "pug0")
 
