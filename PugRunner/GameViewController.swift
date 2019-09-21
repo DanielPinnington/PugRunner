@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
-class ViewController: UIViewController{//}, GameSceneDelegate {
+class GameViewController: UIViewController{//}, GameSceneDelegate {
 
     
     var time = Timer()
@@ -31,7 +31,7 @@ class ViewController: UIViewController{//}, GameSceneDelegate {
         super.viewDidLoad()
         
         let skview = view as! SKView
-        let spaceGame = (MenuScreen(size: skview.bounds.size))
+        let spaceGame = (MenuScene(size: skview.bounds.size))
         //skview.showsPhysics = true
         skview.showsFPS = true
         skview.showsNodeCount = true
