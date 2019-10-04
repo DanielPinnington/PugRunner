@@ -137,12 +137,11 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
     
     
     func createLabel(){
-        
-        myScore = SKLabelNode(fontNamed: "Chalkduster")
-        myScore.text = "Score \(score)"
-        myScore.fontSize = 32
-        myScore.position = CGPoint(x: 210, y: 400)
-    
+            myScore = SKLabelNode(fontNamed: "Chalkduster")
+            myScore.text = "Score \(score)"
+            myScore.fontSize = 32
+            myScore.position = CGPoint(x: 90, y: 340)
+            self.addChild(myScore)
         
         myHighScore = SKLabelNode(fontNamed: "Chalkduster")
         myHighScore.text = "Score \(score)"
