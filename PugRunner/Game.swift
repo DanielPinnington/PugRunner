@@ -10,8 +10,6 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
         //
     }
     
-    
-    
     struct PhysicsCategory {
     static let none         : UInt32 = 0
     static let coin         : UInt32 = 1 << 0
@@ -41,8 +39,7 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
             myScore.text = "Score \(score)"
         }
     }
-    
-    
+     
     override func didMove(to view: SKView) {
         createLabel()
         // Get label node from scene and store it for use later
@@ -99,7 +96,7 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
         myScore = SKLabelNode(fontNamed: "Chalkduster")
         myScore.text = "Score \(score)"
         myScore.fontSize = 32
-        myScore.position = CGPoint(x: -500, y: 250)
+        myScore.position = CGPoint(x: 320, y: 140)
     
         
         myHighScore = SKLabelNode(fontNamed: "Chalkduster")

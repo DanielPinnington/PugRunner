@@ -46,16 +46,22 @@ func createLayers(){
     func pugSprite(){
         let pug = SKTexture.init(imageNamed: "pug0")
         let pug1 = SKTexture.init(imageNamed: "pug1")
-        let frame: [SKTexture] = [pug, pug1]
+        let pug2 = SKTexture.init(imageNamed: "pug2")
+        let pug3 = SKTexture.init(imageNamed: "pug3")
+        let pug4 = SKTexture.init(imageNamed: "pug4")
+        let pug5 = SKTexture.init(imageNamed: "pug5")
+
+        
+        let frame: [SKTexture] = [pug, pug1, pug2, pug3, pug4, pug5]
         button.name = "pug"
         button.size.width = 100
-        button.size.height = 100
-        button.position = CGPoint(x: 320, y: 140)
+        button.size.height = 160
+        button.position = CGPoint(x: 210, y: 400)
        // button.anchorPoint = CGPoint(x: 7.5, y: 6.5)
        // button.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
 
        // button.position = CGPoint(x: 20, y: 10)
-        let animations = SKAction.animate(with: frame, timePerFrame: 0.5)
+        let animations = SKAction.animate(with: frame, timePerFrame: 0.2)
         button.run(SKAction.repeatForever(animations))
         addChild(button)
     }
