@@ -50,8 +50,9 @@ func createLayers(){
         button.name = "pug"
         button.size.width = 100
         button.size.height = 100
-        button.anchorPoint = CGPoint(x: 7.5, y: 6.5)
-        button.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
+        button.position = CGPoint(x: 320, y: 140)
+       // button.anchorPoint = CGPoint(x: 7.5, y: 6.5)
+       // button.position = CGPoint (x: self.size.width/5, y: self.size.height/2)
 
        // button.position = CGPoint(x: 20, y: 10)
         let animations = SKAction.animate(with: frame, timePerFrame: 0.5)
