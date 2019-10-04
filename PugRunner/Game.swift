@@ -5,6 +5,9 @@ import GameKit
 protocol GameSceneDelegate{
     func endResult()
 }
+enum GameState {
+    case ready, ongoing, paused, finished
+}
 class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         //
@@ -30,9 +33,15 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
     var myLabel     : SKLabelNode!
     var myScore     : SKLabelNode!
     var myHighScore : SKLabelNode!
+    var dt          : TimeInterval = 0
+    var backgroundLayer: RepeatingLayer!
+    var gameSceneDelegate : GameSceneDelegate?
+    var worldLayer: Layer!
+    var gameState = GameState.ready
     var time    = Timer()
     var finish  = Timer()
     var counter = 0 //Counter for score every frame (in update)
+    //static let shared = SpaceGameScene()
     
     var score = 0{
         didSet {
@@ -41,6 +50,11 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
     }
      
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+              physicsWorld.gravity = .zero
+              createLayers()
+              //run(backgroundmusic)
+              gameState = .ongoing
         createLabel()
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -91,12 +105,43 @@ class Game: SKScene, GKGameCenterControllerDelegate, SKPhysicsContactDelegate{
                   let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
                   view?.presentScene(newScenee, transition: reveal)
     }
+    func createLayers(){
+        
+        worldLayer = Layer()
+        addChild(worldLayer)
+        worldLayer.layerVelocity = CGPoint(x: 0, y: 0)
+        
+        backgroundLayer = RepeatingLayer()
+        addChild(backgroundLayer)
+        
+        for i in 0...3{
+            let backgroundImage = SKSpriteNode(imageNamed: "dbzBG2.jpg")
+            let backgroundImage2 = SKSpriteNode(imageNamed: "dbzBG1.jpg")
+            let background3 = SKSpriteNode(imageNamed: "dbzBG2.jpg")
+            backgroundImage.name = String(i)
+            backgroundImage.scale(to: frame.size)
+            backgroundImage.anchorPoint = CGPoint.zero
+            backgroundImage2.scale(to: frame.size)
+            backgroundImage2.anchorPoint = CGPoint.zero
+            background3.scale(to: frame.size)
+            background3.anchorPoint = CGPoint.zero
+            backgroundImage.position = CGPoint(x:0.0 + CGFloat(i) * backgroundImage.size.width, y:0.0)
+            backgroundImage2.position = CGPoint(x:0.0 + CGFloat(i) * backgroundImage2.size.width*2, y:0.0)
+            background3.position = CGPoint(x:0.0 + CGFloat(i) * background3.size.width*3, y:0.0)
+            backgroundLayer.addChild(background3)
+            backgroundLayer.addChild(backgroundImage2)
+            backgroundLayer.addChild(backgroundImage)
+        }
+        backgroundLayer.layerVelocity = CGPoint(x:-100, y: 0)
+    }
+    
     
     func createLabel(){
+        
         myScore = SKLabelNode(fontNamed: "Chalkduster")
         myScore.text = "Score \(score)"
         myScore.fontSize = 32
-        myScore.position = CGPoint(x: 320, y: 140)
+        myScore.position = CGPoint(x: 210, y: 400)
     
         
         myHighScore = SKLabelNode(fontNamed: "Chalkduster")
